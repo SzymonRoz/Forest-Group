@@ -1,0 +1,1290 @@
+@use './colors' as *;
+@use './mixins' as *;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: $white;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+
+.nav {
+    position: fixed;
+    top: 0;
+    padding: 1em;
+    width: 100vw;
+    color: $black;
+    z-index: 100;
+    font-size: 3rem;
+    background-color: $white;
+
+
+
+
+    &-left {
+        a {
+            text-decoration: none;
+            color: $black;
+
+            span {
+                margin-left: .2em;
+            }
+        }
+
+        z-index: -1;
+        float: left;
+
+
+
+    }
+
+    &-right {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        touch-action: none;
+        background-color: $white;
+        width: 100vw;
+        transform: translateY(-100%);
+        // animation: nav-mobile .5s ease-in-out forwards;
+
+
+        ul {
+            position: absolute;
+            top: 20%;
+            right: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 60%;
+            list-style-type: none;
+
+            li {
+
+                margin: .5em auto;
+
+                a {
+                    text-decoration: none;
+                    font-size: 3rem;
+                    padding: 1em;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: $black;
+                }
+            }
+        }
+
+    }
+
+    &-mobile {
+        position: relative;
+        height: 35px;
+        width: 35px;
+        position: relative;
+        z-index: 100;
+        float: right;
+
+        button {
+            position: absolute;
+
+            font-size: 3.5rem;
+            background: none;
+            border: none;
+            // font-size: 3rem;
+            cursor: pointer;
+        }
+
+        .fa-xmark {
+            margin-left: .05em;
+            
+            height: 100%;
+            width: 100%;
+            display: none;
+            color: $black;
+        }
+
+        .fa-bars {
+            height: 100%;
+            width: 100%;
+            display: block;
+            color: $black;
+        }
+
+    }
+
+}
+
+
+.heading {
+    @include heroImage('../../dist/img/jungle-min.jpg');
+    margin-top: 97px;
+    height: 25vh;
+    padding: 2em;
+    scroll-margin: 96px;
+
+    &-shadow {
+        @include shadow;
+    }
+
+    &-text {
+        font-weight: 300;
+        font-size: 1.5em;
+        color: $white;
+        margin-bottom: 0.2em;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: $white;
+        font-weight: 600;
+    }
+}
+
+
+
+.about-us {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 2em;
+    padding-top: 3em;
+    scroll-margin: 96px;
+
+    &-title {
+        @include sectionTitle;
+    }
+
+    &-img {
+        margin: 1em 0;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+
+        &--big {
+            display: none;
+        }
+    }
+
+    &-body {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        &-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin-bottom: .2em;
+        }
+
+        &-text {
+            font-size: 1.3rem;
+            line-height: 1.5em;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+.adventure {
+    @include heroImage('../../dist/img/girl-min.jpg');
+    margin-top: 1em;
+    padding: 2em;
+
+    &-shadow {
+        @include shadow
+    }
+
+    &-text {
+        font-size: 1.1rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        color: $white;
+        padding: 1.5em .5em;
+        border: 1px solid $white;
+    }
+}
+
+.offers {
+    position: relative;
+    text-align: center;
+    margin-top: 2em;
+    padding: 2em;
+    scroll-margin: 96px;
+
+    &-full-offer {
+        display: flex;
+        padding: 1em 2em;
+        flex-direction: row-reverse;
+        width: 100%;
+
+        a {
+            position: relative;
+            overflow: hidden;
+            font-size: 1.5rem;
+            padding: 0.4em .7em;
+            text-decoration: none;
+            color: $black;
+            border-bottom: .2em solid $green;
+
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                bottom: 0;
+                left: 0;
+                transform: translateY(100%);
+                width: 100%;
+                height: 100%;
+                border-top-left-radius: .3em;
+                border-top-right-radius: .3em;
+                background-color: $green;
+                transition: .5s;
+            }
+
+
+            &:hover:after {
+                transform: translateY(0%);
+            }
+        }
+
+    }
+
+
+    span,
+    h1 {
+        @include sectionTitle;
+
+    }
+
+    &-text,
+    .offer-text {
+        font-size: 1.48rem;
+        margin: 1em;
+    }
+
+    &-area {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 2em;
+
+        .offer {
+            margin: 2em;
+            padding: 2em;
+            max-width: 80%;
+            border-radius: 1em;
+            border: .1em solid $gray;
+            box-shadow: 0 .3em .2em $dark-gray;
+
+            &-name {
+                font-size: 2rem;
+            }
+
+            &-prize {
+                position: relative;
+                font-size: 4rem;
+                width: 100%;
+                font-weight: bold;
+                margin: .5em 0;
+            }
+
+            &-option {
+                font-size: 1.3rem;
+                text-align: left;
+                display: flex;
+                align-self: flex-start;
+                margin: .6em 0;
+
+                i {
+                    font-size: 1rem;
+                    margin: .3em 0.5em;
+                }
+
+                .fa-check {
+                    color: $green;
+                }
+
+                &--unavaiable {
+                    color: $dark-gray;
+                }
+            }
+
+            button {
+                font-size: 1.5rem;
+                margin: 1em auto;
+                padding: .3em 3em;
+                background: none;
+                color: $black;
+                border-radius: .5em;
+                border: .1em solid $gray;
+                box-shadow: 0 .1em .1em $dark-gray;
+                transition: .3s;
+                cursor: pointer;
+
+                &:hover {
+                    border: .1em solid $green;
+                    box-shadow: 0 .1em .5em $green;
+                    background: $green;
+                }
+            }
+        }
+    }
+}
+
+
+.section-offers {
+    margin-top: 94px;
+}
+
+
+
+.contact {
+    scroll-margin: 92px;
+
+    .wrapper {
+        max-width: 1000px;
+    }
+
+    margin-top: 92px;
+    padding: 3em 2em;
+
+    padding-bottom: 0;
+
+    h1 {
+        text-align: center;
+        @include sectionTitle;
+        margin-bottom: 1em;
+    }
+
+    &-form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 0 2em;
+        margin-bottom: 2em;
+
+        p {
+            font-size: 2rem;
+            padding: .2em 0;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto 1em;
+            border-bottom: .2em solid $green;
+        }
+
+        &-box {
+            display: flex;
+            margin: 2em;
+            flex-direction: column;
+
+            label {
+                font-size: 1.8rem;
+                display: flex;
+
+                i {
+                    font-size: 0.7rem;
+                    margin-left: 1em;
+                    margin-top: .5em;
+                    color: red;
+                }
+
+
+            }
+
+            input,
+            textarea {
+
+                padding: .7em;
+                margin-top: .5em;
+                border-radius: .5em;
+                border: .1em solid $dark-gray;
+                resize: vertical;
+
+                &:focus {
+                    border: 2px solid $green;
+                    outline: none;
+                }
+            }
+
+            textarea {
+                height: 5.5em;
+            }
+
+        }
+
+        button {
+
+            font-size: 1.7rem;
+            margin: 2em auto 2.5em;
+            font-weight: 600;
+            padding: .5em 2em;
+            background-color: $green;
+            color: $light-black;
+            text-transform: uppercase;
+            border-radius: .5em;
+            border: none;
+
+            transition: box-shadow .5s;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 .1em .5em $green;
+            }
+        }
+
+
+    }
+
+
+    .msg-status {
+        position: absolute;
+        font-size: 2rem;
+        top: -10em;
+        left: 15vw;
+        text-align: center;
+        width: 70vw;
+        padding: 1em 2em;
+        background-color: $green;
+        border-radius: 2em;
+        z-index: 1000;
+
+
+    }
+
+    .success {
+        animation: msgStatus 5s forwards;
+    }
+
+}
+
+
+.footer {
+
+    font-size: 3rem;
+    padding: 1em 2em 0;
+    background-color: $gray;
+
+    .wrapper {
+        max-width: 1000px;
+    }
+
+    i {
+
+        float: left;
+
+        span {
+            margin-left: .2em;
+        }
+    }
+
+    &-body {
+        display: flex;
+        justify-content: space-around;
+
+        margin: .5em 0;
+
+        &-box {
+            display: flex;
+
+            flex-direction: column;
+
+            span {
+                font-weight: 600;
+                font-size: 1.5rem;
+                margin-bottom: 0.5em;
+            }
+
+            a {
+                font-size: 1.2rem;
+                line-height: 1.5em;
+                color: $black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .underline {
+        position: absolute;
+        left: 0;
+        right: 0;
+        font-size: 1rem;
+        height: 1px;
+        background-color: $black;
+    }
+
+    p {
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1em 0;
+    }
+}
+
+.footer-contact {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+@media (max-width:380px) {
+    .footer {
+        padding: 1em;
+        padding-bottom: 0;
+
+        &-body-box {
+            span {
+                font-size: 1.4rem;
+            }
+
+            a {
+                font-size: 1.1rem;
+            }
+        }
+
+    }
+}
+
+
+@media (min-width: 460px) {
+    .adventure {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+
+    .about-us {
+        font-size: 1.3rem;
+
+        &-title {
+            font-size: 2.7rem;
+        }
+
+        &-body-title {
+            font-size: 2rem;
+        }
+
+        &-body-text {
+            font-size: 1.5rem;
+        }
+    }
+
+    .offers {
+        font-size: 1.5rem;
+
+        .offer {
+            max-width: 70%;
+            font-size: 2rem;
+
+
+            &-name {
+                font-size: 2.5rem;
+            }
+
+            &-prize {
+                font-size: 4rem;
+            }
+
+            &-option {
+                font-size: 1.7rem;
+            }
+
+            i {
+                font-size: 1.2rem;
+
+            }
+
+            button {
+                font-size: 1.7rem;
+            }
+
+        }
+
+        a {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media (min-width:576px) {
+    .nav {
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+    }
+    .heading {
+        &-text {
+            font-size: 1.8rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+        }
+
+
+    }
+
+    .about-us {
+        font-size: 1.5rem;
+
+        &-title {
+            font-size: 3.5rem;
+        }
+
+        &-body-title {
+            font-size: 2.1rem;
+        }
+
+        &-body-text {
+            font-size: 1.5rem;
+        }
+    }
+
+    .adventure {
+        &-text {
+            padding: 2em 1em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+    }
+
+    .offers {
+        font-size: 1.5rem;
+
+        span {
+            font-size: 3.5rem;
+        }
+
+        &-text {
+            font-size: 1.7rem;
+        }
+
+        .offer {
+
+            max-width: 53%;
+            font-size: 2rem;
+            padding: 2em;
+            margin: 2em 1em;
+
+            &-name {
+                font-size: 2.2rem;
+            }
+
+            &-prize {
+                font-size: 3.5rem;
+            }
+
+            &-option {
+                font-size: 1.5rem;
+            }
+
+            i {
+
+                font-size: 1.1rem;
+
+            }
+
+            button {
+                font-size: 1.5rem;
+            }
+
+        }
+
+        a {
+            font-size: 2rem;
+        }
+    }
+
+    .contact {
+        padding: 2em;
+
+        &-form {
+            p {
+                margin: 0 auto;
+                width: 60%;
+            }
+        }
+
+        button {
+            margin: 1.5em auto;
+        }
+
+        textarea {
+            height: 6em;
+        }
+    }
+
+    .footer {
+        font-size: 3.6rem;
+
+        &-body-box {
+            span {
+
+                font-size: 2rem;
+
+            }
+
+            a {
+                font-size: 1.4rem;
+
+            }
+
+        }
+
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media(min-width:768px) {
+    .nav {
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+
+    .heading {
+        @include heroImage('../../dist/img/jungle-big.jpg');
+
+        &-text {
+            font-size: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+
+    .about-us {
+        font-size: 1.6em;
+
+        &-img {
+            display: none;
+
+            &--big {
+                display: inline-block;
+            }
+        }
+
+        &-title {
+            font-size: 4rem;
+        }
+
+        &-body-title {
+            font-size: 2.6rem;
+            ;
+        }
+
+        &-body-text {
+            font-size: 1.8rem;
+            margin-top: 0.3em;
+        }
+    }
+
+    .adventure {
+        @include heroImage('../../dist/img/girl-big.jpg');
+    }
+
+    .offers {
+        font-size: 1.7rem;
+
+        span {
+            font-size: 4rem;
+        }
+
+        &-text {
+            font-size: 2rem;
+        }
+
+
+
+        .offer {
+            max-width: 45%;
+            font-size: 2.5rem;
+            padding: 1.5em;
+            margin: 1em;
+
+            &-name {
+                font-size: 2.5rem;
+            }
+
+            &-prize {
+                font-size: 4rem;
+            }
+
+            &-option {
+                font-size: 1.8rem;
+            }
+
+            i {
+
+                font-size: 1.3rem;
+
+            }
+
+            button {
+                font-size: 1.8rem;
+            }
+
+        }
+
+        a {
+            font-size: 2rem;
+        }
+    }
+
+
+    .section-offers {
+        .offers-area {
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .offer {
+                padding: 1.3em;
+                max-width: 46%;
+                min-height: 460px;
+                margin: 2em auto;
+                transition: transform .3s;
+
+                &-name {
+                    font-size: 2.38rem;
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    .contact {
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        &-form {
+            p {
+                font-size: 2.3rem;
+                margin-bottom: 1em;
+                width: 55%;
+            }
+
+            textarea {
+                height: 6.5em;
+            }
+        }
+
+        button {
+            margin: 1.5em auto;
+        }
+    }
+
+    .footer {
+        font-size: 3.8rem;
+
+        .logo {
+            margin: .5em;
+        }
+
+        &-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        &-body {
+            width: 60%;
+        }
+    }
+}
+
+
+
+@media(min-width: 992px) {
+
+
+    .nav {
+        padding: 0 1em;
+        height: 92px;
+        display: flex;
+        justify-content: center;
+
+        &-left {
+            z-index: -1;
+            float: left;
+            line-height: 92px;
+        }
+
+        &-right {
+            float: right;
+            position: static;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: $white;
+            width: fit-content;
+            transform: translateY(0%);
+            // animation: nav-mobile .5s ease-in-out forwards;
+
+
+
+
+
+
+            ul {
+                height: 100%;
+                position: static;
+                display: flex;
+
+                flex-direction: row;
+                align-items: center;
+                justify-content: right;
+                list-style-type: none;
+
+                li {
+
+                    margin-top: 7px;
+
+
+                    a {
+
+                        transition: color;
+                        text-decoration: none;
+
+                        font-size: 2rem;
+                        padding: 1.7em;
+                        transition: background-color .3s;
+
+                        &:hover {
+                            background-color: $black;
+                            color: $white;
+                        }
+
+
+
+
+
+
+                    }
+
+                    .active {
+                        background-color: $black;
+                        color: $white;
+                    }
+                }
+            }
+
+        }
+
+        &-mobile {
+            display: none;
+        }
+    }
+
+    .heading {
+        margin-top: 92px;
+        text-align: left;
+        min-height: 300px;
+        scroll-margin: 92px;
+
+        h1 {
+            font-size: 2.7rem;
+        }
+    }
+
+    .about-us {
+        scroll-margin: 92px;
+
+        &-body {
+            flex-direction: row;
+            margin: 2em 0;
+            justify-content: space-evenly;
+
+            img {
+                top: 0;
+                width: 47%;
+                object-fit: contain;
+                margin: 0;
+                margin-right: 2em;
+            }
+
+            div {
+                width: 45%;
+
+                span {
+                    font-size: 2.3rem;
+
+                }
+
+                p {
+                    margin-top: 0.5em;
+                    line-height: 1.8em;
+                }
+            }
+        }
+    }
+
+    .adventure {
+        min-height: 300px;
+
+        &-text {
+            padding: 2.5em 1em;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+    }
+
+    .offers {
+        scroll-margin: 91px;
+
+        &-area {
+            flex-direction: row;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+
+            .offer {
+                width: 28%;
+                font-size: 2rem;
+                padding: 1em;
+                margin: 2em 1em;
+
+                &-name {
+                    font-size: 2.2rem;
+                }
+
+                &-prize {
+                    font-size: 3.5rem;
+                }
+
+                &-option {
+                    font-size: 1.5rem;
+                }
+
+                i {
+
+                    font-size: 1.1rem;
+                    margin-top: .3em;
+                }
+
+                button {
+                    font-size: 1.5rem;
+                }
+
+
+            }
+        }
+    }
+
+
+    .section-offers {
+        .offer {
+            width: 31%;
+
+            .offer-name--birthday {
+                margin-left: -3%;
+                width: 110%;
+            }
+
+            &-option {
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    .contact {
+        scroll-margin: 92px;
+        padding: 0 2em;
+        padding-bottom: 0;
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1em;
+        }
+
+        &-form {
+            padding: 0 2em;
+            margin-bottom: 1em;
+
+            p {
+                font-size: 2.5rem;
+                padding: .3em 0;
+                width: 50%;
+                margin: 0 auto .5em;
+            }
+
+            &-box {
+                margin: 1.5em;
+
+
+                label {
+                    font-size: 2.1rem;
+                    display: flex;
+
+                    i {
+                        font-size: 0.7rem;
+                        margin-left: 1em;
+                        margin-top: .5em;
+                        color: red;
+                    }
+
+
+                }
+
+                input,
+                textarea {
+                    font-size: 1.5rem;
+                    padding: .7em;
+                    margin-top: .5em;
+
+
+
+                }
+
+
+            }
+
+            button {
+
+                font-size: 1.7rem;
+                margin: 1.5em auto 2em;
+            }
+        }
+    }
+
+
+
+    .footer {
+        font-size: 4rem;
+
+
+        &-body {
+            width: 50%;
+            justify-content: space-between;
+
+            a {
+                line-height: 2em;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 965px) and (max-width:983px) {
+    .section-offers {
+        .offer {
+            height: 466px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes nav-mobile-open {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes nav-mobile-close {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes icon-disapear {
+    from {
+
+        opacity: 1;
+        transform: rotate(0deg)
+    }
+
+    99% {
+
+        opacity: 0;
+        transform: rotate(180deg)
+    }
+
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes icon-apear {
+
+    from {
+
+        opacity: 0;
+        transform: rotate(180deg);
+    }
+
+    // 1% {
+    //     display: block;
+    //     opacity: 0;
+    // }
+
+    to {
+        display: block;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes msgStatus {
+    from {
+        opacity: 1;
+        top: -10em;
+    }
+
+    30% {
+        top: 3.5em;
+    }
+
+    80% {
+        top: 3.5em;
+
+    }
+
+    to {
+        top: -10em;
+    }
+}
